@@ -57,12 +57,12 @@ namespace Blog.UI.Tests
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(60));
             driver.Manage().Window.Maximize();
             driver.Navigate().GoToUrl(BrowserHost.RootUrl);
-
+            /*
             RegisterUser newUser = new RegisterUser(driver);
             newUser.RegisterUserNavigateTo();
             newUser.RegisterationOfUser("nikolova.petq@gmail.com", "Petya Nikolova", "P@ssw@rd");
             newUser.AssertNewUser("nikolova.petq@gmail.com");
-
+            */
             Login loginuser = new Login(driver);
             loginuser.LoginUser("nikolova.petq@gmail.com", "P@ssw@rd");
             CreateArticle newArticle = new CreateArticle(driver);
