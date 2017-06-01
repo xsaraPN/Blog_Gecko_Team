@@ -1,10 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Blog.UI.Tests
 {
@@ -12,6 +8,9 @@ namespace Blog.UI.Tests
     {
         private IWebDriver driver;
         private WebDriverWait wait;
+        private string url = @"http://localhost:60634/Article/List";
+        public readonly log4net.ILog log =
+           log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public BasePage(IWebDriver driver)
         {
@@ -33,6 +32,19 @@ namespace Blog.UI.Tests
             {
                 return this.wait;
             }
+        }
+
+        public string Url
+        {
+            get
+            {
+                return this.url;
+            }
+        }
+
+        public void NavigateTo()
+        {
+            this.Driver.Navigate().GoToUrl(this.Url);
         }
     }
 }
