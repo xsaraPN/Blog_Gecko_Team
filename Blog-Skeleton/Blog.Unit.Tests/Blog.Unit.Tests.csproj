@@ -36,10 +36,25 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BrowserHost.cs" />
+    <Compile Include="Models\AccessExcelData.cs" />
+    <Compile Include="Models\LogInUser.cs" />
+    <Compile Include="Models\RegistrationUser.cs" />
+    <Compile Include="Pages\BasePage.cs" />
+    <Compile Include="Pages\LoginPages\LoginPage.cs" />
+    <Compile Include="Pages\LoginPages\LoginPageAsserter.cs" />
+    <Compile Include="Pages\LoginPages\LoginPageMap.cs" />
+    <Compile Include="Pages\RegistrationPages\RegistrationPage.cs" />
+    <Compile Include="Pages\RegistrationPages\RegistrationPageAsserter.cs" />
+    <Compile Include="Pages\RegistrationPages\RegistrationPageMap.cs" />
     <Compile Include="UnitTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Configurations\Environment.config" />
+    <None Include="DataDrivenTests\LogInData.xlsx" />
+    <None Include="DataDrivenTests\RegistrationData.xlsx" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
