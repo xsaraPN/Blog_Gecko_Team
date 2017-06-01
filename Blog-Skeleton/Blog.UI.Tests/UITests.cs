@@ -18,12 +18,12 @@ namespace Blog.UI.Tests
     [TestFixture]
     public class UITests
     {
+		IWebDriver driver = BrowserHost.Instance.Application.Browser;
+        WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(300));
+		
         [Test]
         public void CheckSiteLoad()
-        {
-            IWebDriver driver = BrowserHost.Instance.Application.Browser;
-            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(300));
-
+        {  
             driver.Manage().Window.Maximize();
             driver.Navigate().GoToUrl(BrowserHost.RootUrl);
 
@@ -56,12 +56,12 @@ namespace Blog.UI.Tests
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(60));
             driver.Manage().Window.Maximize();
             driver.Navigate().GoToUrl(BrowserHost.RootUrl);
-            /*
+            
             RegisterUser newUser = new RegisterUser(driver);
             newUser.RegisterUserNavigateTo();
             newUser.RegisterationOfUser("nikolova.petq@gmail.com", "Petya Nikolova", "P@ssw@rd");            
             newUser.AssertNewUser("nikolova.petq@gmail.com");
-            */
+            
             Login loginuser = new Login(driver);
             loginuser.LoginUser("nikolova.petq@gmail.com", "P@ssw@rd");           
             CreateArticle newArticle = new CreateArticle(driver);
@@ -92,7 +92,44 @@ namespace Blog.UI.Tests
             {
                 dash.log.Info("Only vertical scroll bars are shown.");
                 Assert.Fail();
-            }      
+            }  
+			
+/*
+        [Test]
+        public void CheckSiteLoad()
+        {
+            var site = new Page(this.driver);
+
+            site.NavigateTo();
+
+            site.AssertSiteLogo("SOFTUNI BLOG");
+
+        }
+		*/
+		
+        [Test]
+        public void CheckLoadRegistrationPage()
+        {
+            var regPage = new Page(driver);
+            regPage.NavigateTo();
+
+            regPage.CheckRegistrationPage();
+
+            regPage.AssertPageIsOpen("Register");
+        }
+
+        [Test]
+        public void CheckLoadLoginPage()
+        {
+
+            var loginPage = new Page(driver);
+
+            loginPage.NavigateTo();
+            loginPage.ClickLoginButton();
+
+            loginPage.AssertPageIsOpen("Log in");
+        }	
+		
         }
     }
 }
