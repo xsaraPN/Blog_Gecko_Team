@@ -24,9 +24,9 @@ namespace Blog.UI.Tests
         [Test]
         public void CheckSiteLoad()
         {
-            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(300));
-            driver.Manage().Window.Maximize();
-            driver.Navigate().GoToUrl(BrowserHost.RootUrl);
+            WebDriverWait wait = new WebDriverWait(this.driver, TimeSpan.FromSeconds(300));
+            this.driver.Manage().Window.Maximize();
+            this.driver.Navigate().GoToUrl(BrowserHost.RootUrl);
 
             var logo = wait.Until(w => w.FindElement(By.XPath("/html/body/div[1]/div/div[1]/a")));
 
@@ -35,41 +35,39 @@ namespace Blog.UI.Tests
 
         [Test]
         public void FindArticleInDashboard()
-        {
-            IWebDriver driver = BrowserHost.Instance.Application.Browser;
-            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(60));
-            driver.Manage().Window.Maximize();
-            driver.Navigate().GoToUrl(BrowserHost.RootUrl);
-            Login loginuser=new Login(driver);
+        {            
+            WebDriverWait wait = new WebDriverWait(this.driver, TimeSpan.FromSeconds(60));
+            this.driver.Manage().Window.Maximize();
+            this.driver.Navigate().GoToUrl(BrowserHost.RootUrl);
+            Login loginuser=new Login(this.driver);
             loginuser.LoginUser("nikolova.petq@gmail.com", "P@ssw@rd");
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(60);
-            CreateArticle newArticle = new CreateArticle(driver);
+            this.driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(60);
+            CreateArticle newArticle = new CreateArticle(this.driver);
             newArticle.ArticleNavigateTo();
             newArticle.ArticleCreate("qwerty", "browser");
-            ArticlesDashboard dash = new ArticlesDashboard(driver);
+            ArticlesDashboard dash = new ArticlesDashboard(this.driver);
             dash.AssertNewArticle("qwerty");
         }
 
         [Test]
         public void AvailableScrollBarDashboard()
         {
-            IWebDriver driver = BrowserHost.Instance.Application.Browser;
-            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(60));
-            driver.Manage().Window.Maximize();
-            driver.Navigate().GoToUrl(BrowserHost.RootUrl);
+            WebDriverWait wait = new WebDriverWait(this.driver, TimeSpan.FromSeconds(60));
+            this.driver.Manage().Window.Maximize();
+            this.driver.Navigate().GoToUrl(BrowserHost.RootUrl);
             /*
-            RegisterUser newUser = new RegisterUser(driver);
+            RegisterUser newUser = new RegisterUser(this.driver);
             newUser.RegisterUserNavigateTo();
             newUser.RegisterationOfUser("nikolova.petq@gmail.com", "Petya Nikolova", "P@ssw@rd");
             newUser.AssertNewUser("nikolova.petq@gmail.com");
             */
-            Login loginuser = new Login(driver);
+            Login loginuser = new Login(this.driver);
             loginuser.LoginUser("nikolova.petq@gmail.com", "P@ssw@rd");
             CreateArticle newArticle = new CreateArticle(driver);
             newArticle.ArticleNavigateTo();
             newArticle.ArticleCreate("qwertyQWERTYqwertyQWERTYqwertyQWERTYqwertyQWERTY", "browserBROWSERbrowserBROWSERbrowserBROWSERbrowserBROWSERbrowserBROWSERbrowserBROWSERbrowserBROWSERbrowserBROWSERbrowserBROWSERbrowserBROWSER");
-            ArticlesDashboard dash = new ArticlesDashboard(driver);
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(60);
+            ArticlesDashboard dash = new ArticlesDashboard(this.driver);
+            this.driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(60);
             dash.AssertNewArticle("qwertyQWERTYqwertyQWERTYqwertyQWERTYqwertyQWERTY");
             ScrollableControl ctl = new ScrollableControl();
             ScrollBars scroll = dash.GetVisibleScrollbars(ctl);
@@ -112,7 +110,7 @@ namespace Blog.UI.Tests
         [Test]
         public void CheckLoadRegistrationPage()
         {
-            var regPage = new Page(driver);
+            var regPage = new Page(this.driver);
             regPage.NavigateTo();
 
             regPage.CheckRegistrationPage();
@@ -124,7 +122,7 @@ namespace Blog.UI.Tests
         public void CheckLoadLoginPage()
         {
 
-            var loginPage = new Page(driver);
+            var loginPage = new Page(this.driver);
 
             loginPage.NavigateTo();
             loginPage.ClickLoginButton();
