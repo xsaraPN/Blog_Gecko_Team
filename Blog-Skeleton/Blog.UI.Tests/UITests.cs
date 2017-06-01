@@ -1,4 +1,5 @@
-﻿using Blog.UI.Tests.Pages.ArticlesDashboard;
+﻿using Blog.UI.Tests.Pages;
+using Blog.UI.Tests.Pages.ArticlesDashboard;
 using Blog.UI.Tests.Pages.CreateArticle;
 using Blog.UI.Tests.Pages.Login;
 using Blog.UI.Tests.Pages.RegisterUser;
@@ -19,11 +20,11 @@ namespace Blog.UI.Tests
     public class UITests
     {
 		IWebDriver driver = BrowserHost.Instance.Application.Browser;
-        WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(300));
-		
+        		
         [Test]
         public void CheckSiteLoad()
-        {  
+        {
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(300));
             driver.Manage().Window.Maximize();
             driver.Navigate().GoToUrl(BrowserHost.RootUrl);
 
@@ -56,28 +57,28 @@ namespace Blog.UI.Tests
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(60));
             driver.Manage().Window.Maximize();
             driver.Navigate().GoToUrl(BrowserHost.RootUrl);
-            
+
             RegisterUser newUser = new RegisterUser(driver);
             newUser.RegisterUserNavigateTo();
-            newUser.RegisterationOfUser("nikolova.petq@gmail.com", "Petya Nikolova", "P@ssw@rd");            
+            newUser.RegisterationOfUser("nikolova.petq@gmail.com", "Petya Nikolova", "P@ssw@rd");
             newUser.AssertNewUser("nikolova.petq@gmail.com");
-            
+
             Login loginuser = new Login(driver);
-            loginuser.LoginUser("nikolova.petq@gmail.com", "P@ssw@rd");           
+            loginuser.LoginUser("nikolova.petq@gmail.com", "P@ssw@rd");
             CreateArticle newArticle = new CreateArticle(driver);
             newArticle.ArticleNavigateTo();
             newArticle.ArticleCreate("qwertyQWERTYqwertyQWERTYqwertyQWERTYqwertyQWERTY", "browserBROWSERbrowserBROWSERbrowserBROWSERbrowserBROWSERbrowserBROWSERbrowserBROWSERbrowserBROWSERbrowserBROWSERbrowserBROWSERbrowserBROWSER");
             ArticlesDashboard dash = new ArticlesDashboard(driver);
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(60);
             dash.AssertNewArticle("qwertyQWERTYqwertyQWERTYqwertyQWERTYqwertyQWERTY");
-            ScrollableControl ctl = new ScrollableControl();            
+            ScrollableControl ctl = new ScrollableControl();
             ScrollBars scroll = dash.GetVisibleScrollbars(ctl);
-            
+
             if (scroll.Equals(ScrollBars.None))
             {
                 dash.log.Info("No scroll bars are shown.");
                 Assert.Fail();
-            }                
+            }
             else if (scroll.Equals(ScrollBars.Both))
             {
                 dash.log.Info("Both horizontal and vertical scroll bars are shown.");
@@ -92,7 +93,8 @@ namespace Blog.UI.Tests
             {
                 dash.log.Info("Only vertical scroll bars are shown.");
                 Assert.Fail();
-            }  
+            }
+        }
 			
 /*
         [Test]
@@ -128,8 +130,6 @@ namespace Blog.UI.Tests
             loginPage.ClickLoginButton();
 
             loginPage.AssertPageIsOpen("Log in");
-        }	
-		
-        }
+        }		
     }
 }
