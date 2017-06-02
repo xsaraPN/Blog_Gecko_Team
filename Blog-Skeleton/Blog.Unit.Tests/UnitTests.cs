@@ -16,13 +16,13 @@ namespace Blog.Unit.Tests
     [TestFixture]
     public class UnitTests
     {
-        IWebDriver driver;
-
+        IWebDriver driver = BrowserHost.Instance.Application.Browser;
+        /*
         [SetUp]
         public void Init()
         {
           this.driver = BrowserHost.Instance.Application.Browser;
-        }
+        }*/
 
         [TearDown]
         public void CleanUp()
@@ -48,7 +48,7 @@ namespace Blog.Unit.Tests
         [Test, Property("Registration",1)]
         public void RegistrationWithInvalidEmail()
         {
-            var regPage = new RegistrationPage(driver);
+            var regPage = new RegistrationPage(this.driver);
             var user = AccessExcelData.GetRegistrationTestData("RegistrationWithInvalidEmail");
 
             regPage.NavigateTo();
@@ -61,7 +61,7 @@ namespace Blog.Unit.Tests
         [Test, Property("Registration", 1)]
         public void RegistrationWithoutPassword()
         {
-            var regPage = new RegistrationPage(driver);
+            var regPage = new RegistrationPage(this.driver);
             var user = AccessExcelData.GetRegistrationTestData("RegistrationWithoutPassword");
 
             regPage.NavigateTo();
@@ -71,7 +71,7 @@ namespace Blog.Unit.Tests
         [Test, Property("Registration", 1)]
         public void RegistrationWithoutConfirmPassword()
         {
-            var regPage = new RegistrationPage(driver);
+            var regPage = new RegistrationPage(this.driver);
             var user = AccessExcelData.GetRegistrationTestData("RegistrationWithoutConfirmPassword");
 
             regPage.NavigateTo();
@@ -82,7 +82,7 @@ namespace Blog.Unit.Tests
         [Test, Property("Registration", 1)]
         public void RegistrationWithoutEmail()
         {
-            var regPage = new RegistrationPage(driver);
+            var regPage = new RegistrationPage(this.driver);
             var user = AccessExcelData.GetRegistrationTestData("RegistrationWithoutEmail");
 
             regPage.NavigateTo();
@@ -94,7 +94,7 @@ namespace Blog.Unit.Tests
         [Test, Property("Login", 1)]
         public void LoginWithEmptyFields()
         {
-            var loginPage = new LoginPage(driver);
+            var loginPage = new LoginPage(this.driver);
             var loginUser = AccessExcelData.GetLoginTestData("LoginWithEmptyFields");
 
             loginPage.NavigateTo();
@@ -108,7 +108,7 @@ namespace Blog.Unit.Tests
         [Test, Property("Login", 1)]
         public void LoginWithoutEmail()
         {
-            var loginPage = new LoginPage(driver);
+            var loginPage = new LoginPage(this.driver);
             var loginUser = AccessExcelData.GetLoginTestData("LoginWithoutEmail");
 
             loginPage.NavigateTo();
@@ -121,7 +121,7 @@ namespace Blog.Unit.Tests
         [Test, Property("Login", 1)]
         public void LoginWithoutPassword()
         {
-            var loginPage = new LoginPage(driver);
+            var loginPage = new LoginPage(this.driver);
             var loginUser = AccessExcelData.GetLoginTestData("LoginWithoutPassword");
 
             loginPage.NavigateTo();
@@ -135,7 +135,7 @@ namespace Blog.Unit.Tests
         [Test, Property("Login", 1)]
         public void LoginWitInvalidEmail()
         {
-            var loginPage = new LoginPage(driver);
+            var loginPage = new LoginPage(this.driver);
             var loginUser = AccessExcelData.GetLoginTestData("LoginWitInvalidEmail");
 
             loginPage.NavigateTo();
@@ -148,7 +148,7 @@ namespace Blog.Unit.Tests
         [Test, Property("Login", 1)]
         public void LoginWitInvalidData()
         {
-            var loginPage = new LoginPage(driver);
+            var loginPage = new LoginPage(this.driver);
             var loginUser = AccessExcelData.GetLoginTestData("LoginWitInvalidData");
 
             loginPage.NavigateTo();

@@ -16,8 +16,8 @@ namespace Blog.Unit.Tests
 
         static BrowserHost()
         {
-            var ChromeDriverPath = AppDomain.CurrentDomain.BaseDirectory + ConfigurationManager.AppSettings["ChromeDriverFile"];            
-            Instance.Run("Blog", 60638, w => w.WithRemoteWebDriver(() => new ChromeDriver(ChromeDriverPath)));
+            //var ChromeDriverPath = AppDomain.CurrentDomain.BaseDirectory + ConfigurationManager.AppSettings["ChromeDriverFile"];            
+            Instance.Run("Blog", 60638, w => w.WithRemoteWebDriver(() => new ChromeDriver()));
         }
     }
 }
