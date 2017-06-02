@@ -9,25 +9,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace Blog.Unit.Tests
 {
     [TestFixture]
     public class UnitTests
     {
+        IWebDriver driver;
+
         [SetUp]
         public void Init()
         {
-            this.driver = new ChromeDriver();
+          this.driver = BrowserHost.Instance.Application.Browser;
         }
 
         [TearDown]
         public void CleanUp()
         {
             this.driver.Quit();
-        }
-
-        IWebDriver driver = BrowserHost.Instance.Application.Browser;
+        }        
 
      // // [Test, Property("Registration", 1)]
      //  public void RegistrationWithEmptyFields()
@@ -43,6 +44,7 @@ namespace Blog.Unit.Tests
      //      regPage.AssertRegistration("The Full Name field is required.");
      //      regPage.AssertRegistration("The Password field is required.");
      //  }
+
         [Test, Property("Registration",1)]
         public void RegistrationWithInvalidEmail()
         {

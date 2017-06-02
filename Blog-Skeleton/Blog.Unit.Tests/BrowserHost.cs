@@ -16,7 +16,7 @@ namespace Blog.Unit.Tests
         static BrowserHost()
         {
 
-            Instance.Run("Blog", 60639, w => w.WithRemoteWebDriver(() => new ChromeDriver()));
+            Instance.Run("Blog", 60638, w => w.WithRemoteWebDriver(() => new ChromeDriver()));
         }
     }
 }
