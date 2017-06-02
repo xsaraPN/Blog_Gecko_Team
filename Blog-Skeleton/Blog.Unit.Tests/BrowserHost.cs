@@ -1,6 +1,7 @@
 ﻿using OpenQA.Selenium.Chrome;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,8 +16,8 @@ namespace Blog.Unit.Tests
 
         static BrowserHost()
         {
-
-            Instance.Run("Blog", 60638, w => w.WithRemoteWebDriver(() => new ChromeDriver()));
+            var ChromeDriverPath = AppDomain.CurrentDomain.BaseDirectory + ConfigurationManager.AppSettings["ChromeDriverFile"];            
+            Instance.Run("Blog", 60638, w => w.WithRemoteWebDriver(() => new ChromeDriver(ChromeDriverPath)));
         }
     }
 }
