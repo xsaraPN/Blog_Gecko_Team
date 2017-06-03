@@ -16,13 +16,13 @@ namespace Blog.Unit.Tests
     [TestFixture]
     public class UnitTests
     {
-        IWebDriver driver = BrowserHost.Instance.Application.Browser;
-        /*
+        IWebDriver driver;
+        
         [SetUp]
         public void Init()
         {
           this.driver = BrowserHost.Instance.Application.Browser;
-        }*/
+        }
 
         [TearDown]
         public void CleanUp()
