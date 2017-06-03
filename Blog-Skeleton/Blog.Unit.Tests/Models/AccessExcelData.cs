@@ -24,7 +24,7 @@ namespace Blog.Unit.Tests.Models
             
            var con = string.Format(@"Provider=Microsoft.ACE.OLEDB.12.0;
 		                              Data Source = {0}; 
-		                              Extended Properties=Excel 12.0;", path + fileName);
+		                              Extended Properties='Excel 12.0 Xml;HDR=YES;IMEX=1;';", path + fileName);
 
             return con;
         }
