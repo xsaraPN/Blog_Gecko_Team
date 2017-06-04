@@ -22,9 +22,7 @@ namespace Blog.Unit.Tests.Models
           //  var connections = ConfigurationManager.ConnectionStrings[@"Excel_OLEDB"].ConnectionString;
           //  var con = string.Format(@connections, path + fileName);
             
-           var con = string.Format(@"Provider=Microsoft.ACE.OLEDB.12.0;
-		                              Data Source = {0}; 
-		                              Extended Properties='Excel 12.0 Xml;HDR=YES;IMEX=1;';", path + fileName);
+           var con = string.Format("Provider=Microsoft.ACE.OLEDB.12.0;Data Source = {0};Extended Properties=\"Excel 12.0 Xml; HDR = YES; IMEX = 1\";", path + fileName);
 
             return con;
         }
