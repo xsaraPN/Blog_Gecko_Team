@@ -341,9 +341,9 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>60634</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:60634/</IISUrl>
+          <IISUrl>http://localhost:60638/</IISUrl>
           <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
-          <IISAppRootUrl>http://localhost:60634/</IISAppRootUrl>
+          <IISAppRootUrl>http://localhost:60638/</IISAppRootUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

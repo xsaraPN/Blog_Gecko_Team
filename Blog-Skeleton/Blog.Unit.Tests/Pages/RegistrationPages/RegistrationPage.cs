@@ -25,7 +25,7 @@ namespace Blog.Unit.Tests.Pages.RegistrationPages
         //   }
         public void NavigateTo()
         {
-            this.Driver.Navigate().GoToUrl("http://localhost:60634/Article/List");
+            this.Driver.Navigate().GoToUrl("http://localhost:60638/Article/List");
             Registration.Click();
         }
 

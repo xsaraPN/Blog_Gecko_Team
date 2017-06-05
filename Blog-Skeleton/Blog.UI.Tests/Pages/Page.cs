@@ -16,7 +16,7 @@ namespace Blog.UI.Tests.Pages
 
         public void NavigateTo()
         {
-            this.Driver.Navigate().GoToUrl(@"http://localhost:60634/Article/List");
+            this.Driver.Navigate().GoToUrl(@"http://localhost:60638/Article/List");
         }
         public void CheckRegistrationPage()
         {
