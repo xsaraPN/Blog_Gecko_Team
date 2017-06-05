@@ -15,7 +15,7 @@ namespace Blog.UI.Tests.Pages
         }
 
         public void NavigateTo()
-        {
+        {//changed port
             this.Driver.Navigate().GoToUrl(@"http://localhost:60638/Article/List");
         }
         public void CheckRegistrationPage()
