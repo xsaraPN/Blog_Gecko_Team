@@ -281,7 +281,7 @@ namespace Blog.UI.Tests
         [Author("Petya")]
         [TestOf("Articles' Dashboard")]
         [Property("SmokeTests", 1)]
-        [CategoryAttribute("TestA")]
+        [Category("TestA")]
 
         public void ArticleViewEditButtonDashboard()
         {            
